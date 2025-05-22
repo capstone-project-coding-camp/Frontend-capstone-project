@@ -25,5 +25,5 @@ const ProtectedRoute = ({ children }) => {
 export const routes = {
   '/login': () => <AuthWrapper><LoginPage /></AuthWrapper>,
   '/register': () => <AuthWrapper><RegisterPage /></AuthWrapper>,
-  '/': () => <ProtectedRoute><HomePage /></ProtectedRoute>,
+  '/': () => <HomePage />,
 }

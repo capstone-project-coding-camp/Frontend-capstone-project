@@ -120,7 +120,7 @@ export default function LoginForm() {
         </div>
         
         <div className="auth-footer">
-          Don't have an account? <a href="#/register" className="auth-link">Sign up</a>
+          Don't have an account? <a href="/register" className="auth-link">Sign up</a>
         </div>
       </div>
     </div>

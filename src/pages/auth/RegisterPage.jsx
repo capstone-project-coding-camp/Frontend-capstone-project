@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { checkAuth } from '../../services/auth'
 import RegisterForm from '../../components/auth/RegisterForm'
+import Navbar from '../layouts/Navbar';
 
 export default function RegisterPage() {
   const navigate = useNavigate()
@@ -13,11 +14,13 @@ export default function RegisterPage() {
   }, [navigate])
 
   return (
-    <section className="register-container">
-      <div className="register-form-container">
-        <h1 className="register__title">Daftar akun</h1>
-        <RegisterForm />
-      </div>
-    </section>
+    <>
+      <Navbar hideAuthButton={true} />
+      <section className="register-container">
+        <div className="register-form-container">
+          <RegisterForm />
+        </div>
+      </section>
+    </>
   )
 }

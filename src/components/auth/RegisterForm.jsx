@@ -123,7 +123,7 @@ export default function RegisterForm() {
         </div>
         
         <div className="auth-footer">
-          Already have an account? <a href="#/login" className="auth-link">Sign in</a>
+          Already have an account? <a href="/login" className="auth-link">Sign in</a>
         </div>
       </div>
     </div>

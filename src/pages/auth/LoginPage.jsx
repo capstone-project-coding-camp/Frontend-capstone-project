@@ -1,7 +1,8 @@
 import { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { checkAuth } from '../../services/auth'
+import { checkAuth } from '../../services/auth';
+import { useNavigate } from 'react-router-dom';
 import LoginForm from '../../components/auth/LoginForm'
+import Navbar from '../layouts/Navbar';
 
 export default function LoginPage() {
   const navigate = useNavigate()
@@ -13,10 +14,13 @@ export default function LoginPage() {
   }, [navigate])
 
   return (
-    <section className="login-container">
-      <article className="login-form-container">
-        <LoginForm />
-      </article>
-    </section>
+    <>
+      <Navbar hideAuthButton={true} />
+      <section className="login-container">
+        <article className="login-form-container">
+          <LoginForm />
+        </article>
+      </section>
+    </>
   )
 }
