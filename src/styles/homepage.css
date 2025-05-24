@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+.homepage-container {
+  font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-section {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 2rem;
+  background: white;
+}
+
+.hero-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  gap: 2rem;
+}
+
+.text-content {
+  flex: 1;
+  max-width: 600px;
+  text-align: left;
+}
+
+.image-content {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.hero-image {
+  max-width: 100%;
+  height: auto;
+  max-height: 500px;
+  border-radius: 8px;
+}
+
+.hero-title {
+  font-size: 50px;
+  font-weight: 700;
+  color: #2d3748;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.hero-subtitle {
+  font-size: 15px;
+  color: #4a5568;
+  margin-bottom: 2rem;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.cta-button {
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.cta-button.primary {
+  background-color: #4a90e2;
+  color: white;
+}
+
+.cta-button.primary:hover {
+  background-color: #3a7bc8;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cta-button.secondary {
+  background-color: white;
+  color: #4a90e2;
+  border: 2px solid #4a90e2;
+}
+
+.cta-button.secondary:hover {
+  background-color: #f7fafc;
+  transform: translateY(-2px);
+}
+
+.auth-prompt {
+  padding: 2rem;
+  text-align: center;
+  background-color: white;
+  border-top: 1px solid #e2e8f0;
+}
+
+.auth-prompt p {
+  max-width: 600px;
+  margin: 0 auto;
+  color: #4a5568;
+  line-height: 1.6;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .hero-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .text-content {
+    text-align: center;
+    max-width: 100%;
+  }
+  
+  .image-content {
+    justify-content: center;
+    margin-top: 2rem;
+  }
+  
+  .cta-buttons {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+  
+  .cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .cta-button {
+    width: 100%;
+    max-width: 300px;
+  }
+}

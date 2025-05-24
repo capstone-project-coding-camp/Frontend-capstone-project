@@ -1,19 +1,16 @@
-import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import Navbar from './layouts/Navbar';
+import Navbar from './layouts/Navbar'
 import { checkAuth } from '../services/auth'
+import homepageImage from '../assets/images/homepage-illustration.jpg' 
+import '../styles/homePage.css'
 
 export default function HomePage() {
-  const isAuthenticated = checkAuth();
+  const isAuthenticated = checkAuth()
+  const navigate = useNavigate()
 
   return (
-    <div>
-    <Navbar hideAuthButton={true} />
-      {isAuthenticated ? (
-        <p>Welcome back!</p>
-      ) : (
-        <p>Welcome guest! <a href="/login">Login</a></p>
-      )}
+    <div className="homepage-container">
+      <Navbar hideAuthButton={true} />
     </div>
   )
 }
