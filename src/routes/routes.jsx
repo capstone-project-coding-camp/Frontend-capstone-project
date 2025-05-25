@@ -4,6 +4,7 @@ import { checkAuth } from '../services/auth'
 const LoginPage = lazy(() => import('../pages/auth/LoginPage'))
 const RegisterPage = lazy(() => import('../pages/auth/RegisterPage'))
 const HomePage = lazy(() => import('../pages/HomePage'))
+const BalitaForm = lazy(() => import('../pages/BalitaForm'))
 // const NewPage = lazy(() => import('../pages/NewPage'))
 
 const AuthWrapper = ({ children }) => {
@@ -26,4 +27,5 @@ export const routes = {
   '/login': () => <AuthWrapper><LoginPage /></AuthWrapper>,
   '/register': () => <AuthWrapper><RegisterPage /></AuthWrapper>,
   '/': () => <HomePage />,
+  '/balitaform': () => <BalitaForm />
 }
