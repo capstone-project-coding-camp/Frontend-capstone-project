@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import Navbar from './layouts/Navbar';
 import { checkAuth } from '../services/auth';
-import '../styles/HomePage.css';
 import '../styles/BalitaForm.css';
+import Footer from './Layouts/Footer'
 
 export default function BalitaForm() {
   const isAuthenticated = checkAuth();
@@ -12,34 +12,31 @@ export default function BalitaForm() {
     <div className="balitaform-container">
       <Navbar hideAuthButton={true} />
       
-      <div className="form-header">
-        <h1>Halaman Inputan Prediksi</h1>
-        <h2>Gizi</h2>
-        <p className="description">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
-          incididunt ut labore et Lorem Ipsum dolor sit amet, consectetur adipiscing elit, sed do
-        </p>
+      <div className="header-card">
+        <div className="header-content">
+          <h1>Halaman Inputan Prediksi</h1>
+          <h1>Gizi</h1>
+          <p className="description">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
+            incididunt ut labore et Lorem Ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          </p>
+        </div>
       </div>
-      
-      <div className="divider"></div> 
-      
-      <form className="prediction-form">
-        <div className="form-columns">
-          <div className="form-left">
-            <div className="form-section">
-              <h3>Nama Balita</h3>
+      <div className="form-card">
+        <form className="prediction-form">
+          <div className="form-columns">
+            <div className="form-left">
               <div className="form-group">
+                <label>Nama Balita</label>
                 <input 
                   type="text" 
                   placeholder="Masukkan nama balita" 
                   className="form-input"
                 />
               </div>
-            </div>
-            
-            <div className="form-section">
-              <h3>Berat Badan</h3>
+              
               <div className="form-group">
+                <label>Berat Badan (kg)</label>
                 <input 
                   type="number" 
                   placeholder="Masukkan berat badan balita. Contoh: 10.2" 
@@ -47,11 +44,9 @@ export default function BalitaForm() {
                   className="form-input"
                 />
               </div>
-            </div>
-            
-            <div className="form-section">
-              <h3>Tinggi Badan (cm)</h3>
+              
               <div className="form-group">
+                <label>Tinggi Badan (cm)</label>
                 <input 
                   type="number" 
                   placeholder="Masukkan tinggi badan balita. Contoh: 75" 
@@ -59,23 +54,19 @@ export default function BalitaForm() {
                 />
               </div>
             </div>
-          </div>
-          
-          <div className="form-right">
-            <div className="form-section">
-              <h3>Usia Kehamilan Saat Lahir (minggu)</h3>
+            
+            <div className="form-right">
               <div className="form-group">
+                <label>Usia Kehamilan Saat Lahir (minggu)</label>
                 <input 
                   type="number" 
-                  placeholder="Contoh: 38 minggu" 
+                  placeholder="Contoh: 39 minggu" 
                   className="form-input"
                 />
               </div>
-            </div>
-            
-            <div className="form-section">
-              <h3>Status Imunisasi</h3>
+              
               <div className="form-group">
+                <label>Status Imunisasi</label>
                 <select className="form-select">
                   <option value="">Pilih salah satu</option>
                   <option value="lengkap">Lengkap</option>
@@ -83,11 +74,9 @@ export default function BalitaForm() {
                   <option value="belum">Belum Imunisasi</option>
                 </select>
               </div>
-            </div>
-            
-            <div className="form-section">
-              <h3>Status Ekonomi Keluarga</h3>
+              
               <div className="form-group">
+                <label>Status Ekonomi Keluarga</label>
                 <select className="form-select">
                   <option value="">Pilih berdasarkan kondisi saat ini</option>
                   <option value="mampu">Mampu</option>
@@ -97,13 +86,13 @@ export default function BalitaForm() {
               </div>
             </div>
           </div>
-        </div>
-        
-        <div className="submit-btn-container">
-          <button type="submit" className="submit-btn">Cek Sekarang</button>
-          <button type="submit" className="submit-btn">Mulai Prediksi</button>
-        </div>
-      </form>
+          
+          <div className="form-actions">
+            <button type="submit" className="submit-btn">Cek Sekarang</button>
+          </div>
+        </form>
+      </div>
+      <Footer/>
     </div>
   );
 };
