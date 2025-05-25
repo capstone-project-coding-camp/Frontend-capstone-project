@@ -12,7 +12,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1200px;
+  max-width: 1270px;
   margin: 0 auto;
   padding: 0 2rem;
 }
@@ -35,7 +35,7 @@
 
 .navbar-menu {
   display: flex;
-  gap: 40px; /* Jarak antar menu items */
+  gap: 40px;
 }
 
 .nav-link {
@@ -44,11 +44,12 @@
   font-size: 15px;
   font-weight: 500;
   transition: color 0.3s;
-  white-space: nowrap; /* Mencegah text wrapping */
+  white-space: nowrap; 
 }
 
 .nav-link:hover {
   color: #4a90e2;
+  text-decoration: none;
 }
 
 .navbar-auth .auth-link {
@@ -63,7 +64,9 @@
 }
 
 .navbar-auth .auth-link:hover {
-  background-color: #3a7bc8;
+  background-color: white;
+  color: #4472C6;
+  border: 2px solid #4472C6;
 }
 
 /* Responsive Design */
