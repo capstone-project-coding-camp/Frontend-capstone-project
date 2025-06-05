@@ -34,7 +34,27 @@ export function checkAuth() {
   return !!getAccessToken()
 }
 
-export function logout() {
-  removeAccessToken()
-  window.location.href = '/login'
+export async function logout() {
+  try {
+    // Opsional: Kirim request logout ke backend
+    const response = await fetch('/api/auth/logout', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${getAccessToken()}`
+      }
+    });
+
+    // Pastikan token dihapus di client side apapun hasilnya
+    removeAccessToken();
+    
+    // Redirect ke halaman login
+    window.location.href = '/login';
+    
+    return true;
+  } catch (error) {
+    console.error('Logout error:', error);
+    removeAccessToken();
+    window.location.href = '/login';
+    return false;
+  }
 }

@@ -5,6 +5,10 @@ const LoginPage = lazy(() => import('../pages/auth/LoginPage'))
 const RegisterPage = lazy(() => import('../pages/auth/RegisterPage'))
 const HomePage = lazy(() => import('../pages/HomePage'))
 const BalitaForm = lazy(() => import('../pages/BalitaForm'))
+const Profile = lazy(() => import('../pages/Profile'))
+const About = lazy(() => import('../pages/AboutPage'))
+const Contact = lazy(() => import('../pages/Contact')) 
+const PredictResult = lazy(() => import('../pages/PredictionResult')) 
 // const NewPage = lazy(() => import('../pages/NewPage'))
 
 const AuthWrapper = ({ children }) => {
@@ -27,5 +31,9 @@ export const routes = {
   '/login': () => <AuthWrapper><LoginPage /></AuthWrapper>,
   '/register': () => <AuthWrapper><RegisterPage /></AuthWrapper>,
   '/': () => <HomePage />,
-  '/balitaform': () => <BalitaForm />
+  '/about': () => <About />,
+  '/contact': () => <Contact />,
+  '/PredictResult': () => <PredictResult />,
+  '/prediksi': () => <ProtectedRoute><BalitaForm /></ProtectedRoute>,
+  '/profile': () => <ProtectedRoute><Profile /></ProtectedRoute>
 }

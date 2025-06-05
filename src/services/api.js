@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { getAccessToken } from './auth'
 
-const API_BASE_URL = 'https://your-api-endpoint.com/api'
+const API_BASE_URL = 'http://localhost:5000/api'
 
 const api = axios.create({
   baseURL: API_BASE_URL,
@@ -20,17 +20,30 @@ api.interceptors.request.use((config) => {
 
 export const getLogin = async ({ email, password }) => {
   try {
-    const response = await api.post('/login', { email, password })
-    return response.data
+    const response = await api.post('/auth/login', { email, password });
+    
+    // The backend returns data directly (response.data is the actual response)
+    if (!response.data.success) {
+      throw new Error(response.data.message || 'Login failed');
+    }
+    
+    return response.data;
   } catch (error) {
-    console.error('Login error:', error)
-    throw error
+    // Enhanced error handling
+    const errorMessage = error.response?.data?.message || 
+                        error.message || 
+                        'Login failed';
+    console.error('Login error details:', {
+      error,
+      response: error.response?.data,
+    });
+    throw new Error(errorMessage);
   }
-}
+};
 
 export const getRegistered = async ({ name, email, password }) => {
   try {
-    const response = await api.post('/register', { name, email, password })
+    const response = await api.post('/auth/register', { name, email, password })
     return response.data
   } catch (error) {
     console.error('Registration error:', error)

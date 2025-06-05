@@ -14,34 +14,36 @@ export default function LoginForm() {
   const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    setIsLoading(true)
-    setError('')
-    
+    e.preventDefault();
+    setIsLoading(true);
+    setError('');
+  
     try {
-      const response = await getLogin({ email, password })
+      const response = await getLogin({ email, password });
       
-      if (!response.ok) {
-        throw new Error(response.message || 'Login failed')
+      // Debug log - check the actual response structure
+      console.log('Login response:', response);
+  
+      if (!response.success) {
+        throw new Error(response.message || 'Login failed');
       }
-
-      const token = response.data?.loginResult?.token || 
-                   response.data?.token || 
-                   response.data?.accessToken
-
+  
+      // Get token from the correct location
+      const token = response.token;
+      
       if (!token) {
-        throw new Error('No access token received from server')
+        throw new Error('No access token received');
       }
-
-      putAccessToken(token)
-      navigate('/')
+  
+      putAccessToken(token);
+      navigate('/');
     } catch (err) {
-      setError(err.message || 'Login process failed')
-      console.error('Login error:', err)
+      setError(err.message || 'Login process failed');
+      console.error('Login error:', err);
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
     }
-  }
+  };
 
   return (
     <div className="auth-container">
