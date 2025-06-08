@@ -14,8 +14,7 @@ export default function BalitaForm() {
       
       <div className="header-card">
         <div className="header-content">
-          <h1>Halaman Inputan Prediksi</h1>
-          <h1>Gizi</h1>
+          <h1>Halaman Inputan Prediksi Gizi</h1>
           <p className="description">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
             incididunt ut labore et Lorem Ipsum dolor sit amet, consectetur adipiscing elit, sed do

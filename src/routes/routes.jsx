@@ -5,6 +5,7 @@ const LoginPage = lazy(() => import('../pages/auth/LoginPage'))
 const RegisterPage = lazy(() => import('../pages/auth/RegisterPage'))
 const HomePage = lazy(() => import('../pages/HomePage'))
 const BalitaForm = lazy(() => import('../pages/BalitaForm'))
+const Riwayat = lazy(() => import('../pages/Riwayat'))
 const Profile = lazy(() => import('../pages/Profile'))
 const About = lazy(() => import('../pages/AboutPage'))
 const Contact = lazy(() => import('../pages/Contact')) 
@@ -31,6 +32,8 @@ export const routes = {
   '/login': () => <AuthWrapper><LoginPage /></AuthWrapper>,
   '/register': () => <AuthWrapper><RegisterPage /></AuthWrapper>,
   '/': () => <HomePage />,
+  '/balitaform': () => <BalitaForm />,
+  '/riwayat': () => <Riwayat />,
   '/about': () => <About />,
   '/contact': () => <Contact />,
   '/PredictResult': () => <PredictResult />,
