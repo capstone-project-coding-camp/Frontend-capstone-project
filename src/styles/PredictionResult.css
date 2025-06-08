@@ -1,0 +1,101 @@
+.prediction-page {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  background-color: #f5f7fa;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.prediction-container {
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 0 20px;
+  flex: 1;
+}
+
+/* Header Styling sesuai gambar */
+.prediction-header {
+  margin-bottom: 30px;
+}
+
+.prediction-header h1 {
+  font-size: 24px;
+  color: #2c3e50;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.header-description p {
+  color: #555;
+  line-height: 1.6;
+  font-size: 15px;
+  margin-bottom: 15px;
+}
+
+.header-divider {
+  height: 1px;
+  background-color: #ddd;
+  margin: 20px 0;
+}
+
+/* Data Section Styling */
+.data-section {
+  margin-bottom: 40px;
+}
+
+.section-title {
+  font-size: 18px;
+  color: #2c3e50;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.baby-data-table {
+  display: flex;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.data-column {
+  flex: 1;
+}
+
+.data-column:first-child {
+  border-right: 1px solid #ddd;
+}
+
+.data-header {
+  padding: 12px 15px;
+  background-color: #f8f9fa;
+  font-weight: 600;
+  border-bottom: 1px solid #ddd;
+}
+
+.data-value {
+  padding: 12px 15px;
+  border-bottom: 1px solid #ddd;
+}
+
+.data-value:last-child,
+.data-header:last-child {
+  border-bottom: none;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .baby-data-table {
+    flex-direction: column;
+  }
+  
+  .data-column:first-child {
+    border-right: none;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .data-header,
+  .data-value {
+    padding: 10px 12px;
+  }
+}

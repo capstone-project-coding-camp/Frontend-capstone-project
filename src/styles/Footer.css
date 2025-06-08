@@ -91,30 +91,77 @@
 
 .footer-button {
   padding: 10px 15px;
-  background-color: #4472C6;
+  background: linear-gradient(to right,  #64b5f6, #1976d2);
   color: white;
   border: none;
   border-radius: 6px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
 }
 
-.footer-button.secondary {
-  background-color: rgb(0, 0, 0);
-  color: #4472C6;
-  border: 2px solid #4472C6;
+.footer-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 4px; /* Lebih kecil dari border-radius button */
+  padding: 2px;
+  background: linear-gradient(to right,  #42a5f5, #1565c0);
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .footer-button:hover {
-  background-color: rgb(0, 0, 0);
+  background: white;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+.footer-button:hover::before {
+  opacity: 1;
+}
+
+/* Secondary Footer Button */
+.footer-button.secondary {
+  background: transparent;
   color: #4472C6;
   border: 2px solid #4472C6;
+  position: relative;
+}
+
+.footer-button.secondary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to right,   #42a5f5, #1565c0);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .footer-button.secondary:hover {
-  background-color: #3a7bc8;
-  color : white;
+  color: white;
+  background: linear-gradient(to right,   #42a5f5, #1565c0);
+}
+
+.footer-button.secondary:hover::before {
+  opacity: 1;
 }
 
 @media (max-width: 768px) {
