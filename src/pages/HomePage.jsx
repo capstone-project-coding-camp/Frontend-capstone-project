@@ -29,14 +29,17 @@ export default function HomePage() {
             
             <div className="cta-buttons">
                 <>
+                {!isAuthenticated && (
                   <button 
-                    className="cta-button primary"
+                    className="cta-button primary mt-3"
                     onClick={() => navigate('/register')}
                   >
                     Daftar Sekarang
                   </button>
+
+                )}
                   <button 
-                  className="cta-button secondary"
+                  className="cta-button secondary mt-3"
                   onClick={() => navigate('/prediksi')}
                 >
                   Mulai Prediksi
@@ -64,10 +67,10 @@ export default function HomePage() {
         
       )}
 
-      <section className="about-section">
+      <section className="about-section mt-5">
         <div className="about-content">
           <div className="about-text">
-            <h2 className="about-title">Peduli Gizi</h2>
+            <h2 className="about-title mt-5">Peduli Gizi</h2>
             <p className="about-description">
               Platform digital yang bertujuan untuk membantu mendeteksi dini risiko gizi buruk pada balita di Indonesia. Kami percaya bahwa setiap anak berhak tumbuh sehat dan berkembang optimal dan semuanya dimulai dari gizi yang baik.  
               Dengan memanfaatkan teknologi kecerdasan buatan (AI) dan data kesehatan nasional, kami menciptakan sistem prediksi yang mudah digunakan oleh orang tua, kader posyandu, serta tenaga media.

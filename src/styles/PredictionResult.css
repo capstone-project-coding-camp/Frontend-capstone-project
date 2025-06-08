@@ -1,101 +1,261 @@
 .prediction-page {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #333;
-  background-color: #f5f7fa;
+  background-color: #f8f9fa;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
-.prediction-container {
-  max-width: 800px;
-  margin: 30px auto;
-  padding: 0 20px;
-  flex: 1;
+/* Blue Header Section */
+.blue-header-section {
+  position: relative;
+  margin-bottom: 100px;
 }
 
-/* Header Styling sesuai gambar */
-.prediction-header {
+.blue-header {
+  background-color: #4a6baf;
+  background-image: linear-gradient(to right, #4a6baf, #3a5a9f);
+  color: white;
+  padding: 60px 0 80px;
+  position: relative;
+}
+
+.blue-header h1 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.header-description {
+  font-size: 15px;
+  opacity: 0.9;
+  margin-bottom: 0;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Data Card Overlapping */
+.data-card-overlap {
+  position: relative;
+  top: -40px;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  border: none;
+}
+
+.card-title {
+  font-size: 20px;
+  color: #2c3e50;
+  margin-bottom: 25px;
+  font-weight: bold;
+  border-left: 4px solid #4a6baf;
+  padding-left: 15px;
+}
+
+.data-value-field {
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  padding: 8px 12px;
+  border-radius: 6px;
+  width: 100%;
+  font-size: 18px;
+}
+
+
+.section-title {
+  font-size: 20px;
+  color: #2c3e50;
+  margin-bottom: 25px;
+  font-weight: bold;
+  border-left: 4px solid #4a6baf;
+  padding-left: 15px;
+}
+
+.nutrition-status-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Progress Circle */
+.progress-circle-container {
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.progress-circle {
+  width: 240px;  /* Diperbesar dari 200px */
+  height: 240px; /* Diperbesar dari 200px */
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.circle-progress {
+  position: absolute;
+  width: 220px;  /* Diperbesar dari 180px */
+  height: 220px; /* Diperbesar dari 180px */
+  border-radius: 50%;
+  background: conic-gradient(#FACC15 calc(var(--progress) * 3.6deg), #e0e0e0 0deg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.circle-inner {
+  width: 200px;  /* Diperbesar dari 160px */
+  height: 200px; /* Diperbesar dari 160px */
+  border-radius: 50%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+/* Menyesuaikan ukuran font agar proporsional */
+.circle-percentage {
+  font-size: 36px;  /* Diperbesar dari 28px */
+  font-weight: 500;
+  color: #FACC15;
+}
+
+.circle-label {
+  font-size: 20px;  /* Diperbesar dari 16px */
+  font-weight: 600;
+  color: #9f9f9f;
+}
+
+.progress-description {
+  font-size: 18px;
+  font-weight: 600;
+  color: #4a6baf;
+  margin-top: 10px;
+}
+
+/* Status Description */
+.status-description {
+  text-align: left;
+  padding: 0 20px;
+}
+
+.status-title {
+  color: #000000;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.status-text {
+  color: #555;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.recommendation-card {
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  border: none;
   margin-bottom: 30px;
 }
 
-.prediction-header h1 {
-  font-size: 24px;
+.recommendation-title {
+  font-size: 20px;
   color: #2c3e50;
-  margin-bottom: 15px;
-  font-weight: 600;
+  margin-bottom: 25px;
+  font-weight: bold;
+  border-left: 4px solid #4a6baf;
+  padding-left: 15px;
 }
 
-.header-description p {
-  color: #555;
-  line-height: 1.6;
-  font-size: 15px;
-  margin-bottom: 15px;
-}
-
-.header-divider {
-  height: 1px;
-  background-color: #ddd;
-  margin: 20px 0;
-}
-
-/* Data Section Styling */
-.data-section {
-  margin-bottom: 40px;
-}
-
-.section-title {
-  font-size: 18px;
-  color: #2c3e50;
-  margin-bottom: 15px;
-  font-weight: 600;
-}
-
-.baby-data-table {
+.recommendation-boxes {
   display: flex;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  overflow: hidden;
+  flex-direction: column;
+  gap: 12px;
 }
 
-.data-column {
-  flex: 1;
-}
-
-.data-column:first-child {
-  border-right: 1px solid #ddd;
-}
-
-.data-header {
+.recommendation-box {
   padding: 12px 15px;
-  background-color: #f8f9fa;
+  border-radius: 8px;
+  font-size: 16px;
+  color: white;
+}
+
+.bg-blue {
+  background-color: #4a6baf;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 25px;
+}
+
+.btn-gradient-blue {
+  padding: 10px 25px;
+  border-radius: 6px;
   font-weight: 600;
-  border-bottom: 1px solid #ddd;
+  border: none;
+  cursor: pointer;
+  color: white;
+  background: linear-gradient(to right, #42a5f5, #1565c0);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-.data-value {
-  padding: 12px 15px;
-  border-bottom: 1px solid #ddd;
+/* Knowledge Cards */
+.knowledge-main-card {
+  border-radius: 10px;
+  border: none;
 }
 
-.data-value:last-child,
-.data-header:last-child {
-  border-bottom: none;
+.knowledge-column {
+  padding: 20px;
 }
 
-/* Responsive */
-@media (max-width: 600px) {
-  .baby-data-table {
-    flex-direction: column;
+.knowledge-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 15px;
+}
+
+.knowledge-text {
+  font-size: 15px;
+  color: rgba(255,255,255,0.9);
+  line-height: 1.6;
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .blue-header {
+    padding: 40px 0 60px;
   }
   
-  .data-column:first-child {
-    border-right: none;
-    border-bottom: 1px solid #ddd;
+  .data-card-overlap {
+    top: -30px;
   }
   
-  .data-header,
-  .data-value {
-    padding: 10px 12px;
+  .form-label {
+    text-align: left !important;
+    padding-bottom: 5px;
   }
+
+  .progress-wrapper {
+    width: 150px;
+  }
+  
+  .status-description {
+    padding: 0 10px;
+  }
+
 }

@@ -1,7 +1,10 @@
 import React from 'react';
 import Navbar from './layouts/Navbar';
 import Footer from './layouts/Footer';
+import { Container, Row, Col, Card, Form } from 'react-bootstrap';
 import '../styles/PredictionResult.css';
+import { CircularProgressbar } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
 
 const PredictionResult = () => {
   // Data contoh hasil prediksi
@@ -18,48 +21,150 @@ const PredictionResult = () => {
     <div className="prediction-page">
       <Navbar hideAuthButton={true} />
       
-      <div className="prediction-container">
-        {/* Header sesuai gambar */}
-        <div className="prediction-header">
-          <h1>Hasil Prediksi Risiko Gizi Buruk Balita</h1>
-          <div className="header-description">
-            <p>
-              Prediksi ini didasarkan pada data balita yang Anda masukkan sebelumnya. Hasil ini dapat membantu
-              Anda memahami kondisi gizi anak dan langkah tindak lanjut yang disarankan.
-            </p>
-          </div>
-          <div className="header-divider"></div>
+      {/* Blue Header Section with Card Overlapping */}
+      <div className="blue-header-section">
+        <div className="blue-header">
+          <Container>
+            <Row className="justify-content-center text-center">
+              <Col lg={10}>
+                <h1>Hasil Prediksi Risiko Gizi Buruk Balita</h1>
+                <p className="header-description">
+                  Prediksi ini didasarkan pada data balita yang Anda masukkan sebelumnya. Hasil ini dapat membantu
+                  Anda memahami kondisi gizi anak dan langkah tindak lanjut yang disarankan.
+                </p>
+              </Col>
+            </Row>
+          </Container>
         </div>
         
-        {/* Data Balita dalam format tabel seperti gambar */}
-        <div className="data-section">
-          <h2 className="section-title">| Data Balita</h2>
-          
-          <div className="baby-data-table">
-            <div className="data-column">
-              <div className="data-header">Nama Balita</div>
-              <div className="data-header">Berat Badan</div>
-              <div className="data-header">Tinggi Badan</div>
-              <div className="data-header">Usia Kehamilan Saat Lahir</div>
-              <div className="data-header">Status Imunisasi</div>
-              <div className="data-header">Status Ekonomi Keluarga</div>
-            </div>
-            
-            <div className="data-column">
-              <div className="data-value">{babyData.name}</div>
-              <div className="data-value">{babyData.weight}</div>
-              <div className="data-value">{babyData.height}</div>
-              <div className="data-value">{babyData.gestationalAge}</div>
-              <div className="data-value">{babyData.immunizationStatus}</div>
-              <div className="data-value">{babyData.economicStatus}</div>
-            </div>
-          </div>
-        </div>
-        
-        {/* Tambahkan bagian status gizi dan rekomendasi di sini */}
-        {/* ... */}
+        <Container>
+          <Row className="justify-content-center">
+            <Col lg={10}>
+              <Card className="data-card-overlap">
+                <Card.Body className="p-4">
+                  <h2 className="card-title">Data Balita</h2>
+                  
+                  <Form>
+                    {[
+                      { label: 'Nama Balita', value: babyData.name },
+                      { label: 'Berat Badan', value: babyData.weight },
+                      { label: 'Tinggi Badan', value: babyData.height },
+                      { label: 'Usia Kehamilan Saat Lahir', value: babyData.gestationalAge },
+                      { label: 'Status Imunisasi', value: babyData.immunizationStatus },
+                      { label: 'Status Ekonomi Keluarga', value: babyData.economicStatus }
+                    ].map((item, index) => (
+                      <Form.Group as={Row} className="mb-3 align-items-center" key={index}>
+                        <Form.Label column sm={4} className="fw-bold ps-4 text-start">
+                          {item.label}
+                        </Form.Label>
+                        <Col sm={8}>
+                          <Form.Control 
+                            plaintext 
+                            readOnly 
+                            defaultValue={item.value} 
+                            className="data-value-field"
+                          />
+                        </Col>
+                      </Form.Group>
+                    ))}
+                  </Form>
+                </Card.Body>
+              </Card>
+            </Col>
+          </Row>
+        </Container>
       </div>
-      
+
+        {/* Status Gizi Section */}
+        <Container>
+          <Row className="justify-content-center">
+            <Col lg={10}>
+                <div className="p-4">
+                  <h2 className="section-title">Status Gizi Balita</h2>
+                  
+                  <div className="nutrition-status-content">
+                    {/* Progress Circle */}
+                    <div className="progress-circle-container">
+                      <div className="progress-circle risk-normal">
+                        <div className="circle-progress" style={{ '--progress': '75' }}></div>
+                        <div className="circle-inner">
+                          <div className="circle-percentage">75%</div>
+                          <div className="circle-label">Resiko Normal</div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {/* Status Description */}
+                  </div>
+                  <div className="status-description">
+                    <h3 className="status-title">Resiko Normal</h3>
+                    <div className="divider"></div>
+                    <p className="status-text">
+                      Status Gizi Pada Balita Berstatus Normal, Tetapi Memerlukan peningkatan lebih lanjut
+                    </p>
+                  </div>
+                </div>
+            </Col>
+          </Row>
+        </Container>
+
+        {/* Recommendation Section */}
+          <Container className="mt-4 mb-5">
+            <Row className="justify-content-center">
+              <Col lg={10}>
+                <Card className="recommendation-card">
+                  <Card.Body className="p-4">
+                    <h2 className="recommendation-title">Rekomendasi</h2>
+                    
+                    <div className="recommendation-boxes">
+                      <div className="recommendation-box bg-blue">
+                        Cek ulang asupan gizi harian
+                      </div>
+                      <div className="recommendation-box bg-blue">
+                        Rutin timbang dan ukur tinggi anak setiap bulan
+                      </div>
+                      <div className="recommendation-box bg-blue">
+                        Lengkapi imunisasi dasar
+                      </div>
+                      <div className="recommendation-box bg-blue">
+                        Konsultasikan ke puskesmas jika risiko sedang/tinggi
+                      </div>
+                    </div>
+                    
+                    <div className="action-buttons mt-4">
+                      <button className="btn-gradient-blue">Cek Kembali</button>
+                    </div>
+                  </Card.Body>
+                </Card>
+              </Col>
+            </Row>
+          </Container>
+
+          {/* Nutrition Knowledge Section */}
+          <Container className="mt-4 mb-5">
+            <Row className="justify-content-center">
+              <Col lg={10}>
+                <Card className="knowledge-main-card bg-blue">
+                  <Card.Body className="p-4">
+                    <Row>
+                      <Col md={6} className="knowledge-column">
+                        <h3 className="knowledge-title">Kenali Tanda Gizi Buruk</h3>
+                        <p className="knowledge-text">
+                          Pelajari gejala awal seperti berat badan tidak naik, anak sering sakit, dan perubahan perilaku.
+                        </p>
+                      </Col>
+                      <Col md={6} className="knowledge-column">
+                        <h3 className="knowledge-title">Cara Mencegah Gizi Buruk</h3>
+                        <p className="knowledge-text">
+                          Langkah-langkah pencegahan seperti pemberian MPASI bergizi, penimbangan rutin, dan kebersihan makanan.
+                        </p>
+                      </Col>
+                    </Row>
+                  </Card.Body>
+                </Card>
+              </Col>
+            </Row>
+          </Container>
       <Footer />
     </div>
   );
