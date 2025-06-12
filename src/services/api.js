@@ -51,4 +51,96 @@ export const getRegistered = async ({ name, email, password }) => {
   }
 }
 
-// Add other API calls as needed
+// Tambahkan fungsi-fungsi berikut ke api.js
+export const getMe = async () => {
+  try {
+    const response = await api.get('/auth/me');
+    return response.data;
+  } catch (error) {
+    console.error('Get profile error:', error);
+    throw error;
+  }
+};
+
+export const updateProfile = async (profileData) => {
+  try {
+    const response = await api.put('/auth/update-profile', profileData);
+    return response.data;
+  } catch (error) {
+    console.error('Update profile error:', error);
+    throw error;
+  }
+};
+
+export const changePassword = async (passwordData) => {
+  try {
+    const response = await api.put('/auth/update-password', passwordData);
+    return response.data;
+  } catch (error) {
+    console.error('Change password error:', error);
+    throw error;
+  }
+};
+
+// Tambahkan fungsi berikut:
+
+export const predictNutrition = async (data) => {
+  try {
+    const response = await api.post('/predictions', data);
+    return response.data;
+  } catch (error) {
+    console.error('Prediction error:', error);
+    throw error;
+  }
+};
+
+// Tambahkan fungsi berikut ke services/api.js
+export const createBaby = async (babyData) => {
+  try {
+    const response = await api.post('/auth/babies', babyData);
+    return response.data;
+  } catch (error) {
+    console.error('Error creating baby:', error);
+    throw error;
+  }
+};
+export const getBabies = async () => {
+  try {
+    const response = await api.get('/babies');
+    return response.data;
+  } catch (error) {
+    console.error('Get babies error:', error);
+    throw error;
+  }
+};
+
+export const createMeasurement = async (measurementData) => {
+  try {
+    const response = await api.post('/auth/measurements', measurementData);
+    return response.data;
+  } catch (error) {
+    console.error('Error creating measurement:', error);
+    throw error;
+  }
+};
+
+export const getMeasurements = async () => {
+  try {
+    const response = await api.get('/auth/measurements');
+    return response.data;
+  } catch (error) {
+    console.error('Error getting measurements:', error);
+    throw error;
+  }
+};
+
+// export const saveMeasurement = async (data) => {
+//   try {
+//     const response = await api.post('/auth/measurements', data);
+//     return response.data;
+//   } catch (error) {
+//     console.error('Error saving measurement:', error);
+//     throw error;
+//   }
+// };
+

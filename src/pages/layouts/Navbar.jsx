@@ -77,6 +77,12 @@ const Navbar = ({ transparent = false, hideAuthButton = false }) => {
               Edukasi
             </Link>
             <Link 
+              to="/riwayat" 
+              className={`nav-link ${isActive('/riwayat') ? 'active' : ''}`}
+            >
+              Riwayat
+            </Link>
+            <Link 
               to="/PredictResult" 
               className={`nav-link ${isActive('/PredictResult') ? 'active' : ''}`}
             >

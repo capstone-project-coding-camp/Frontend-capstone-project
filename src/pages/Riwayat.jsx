@@ -1,14 +1,100 @@
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "./layouts/Navbar";
 import Footer from "./Layouts/Footer";
+import { getMeasurements } from "../services/api";
+import { getAccessToken } from "../services/auth";
 import "../styles/riwayat.css";
 
 const RiwayatEdukasi = () => {
-  const historyData = [
-    { date: "24 Januari 2025", weight: "9.8 kg", height: "68.6 cm" },
-    { date: "24 Januari 2025", weight: "9.8 kg", height: "68.6 cm" },
-    { date: "24 Januari 2025", weight: "9.8 kg", height: "68.6 cm" },
-  ];
+  const [measurements, setMeasurements] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
+
+  // State untuk form mentoring
+  const [formData, setFormData] = useState({
+    weight: "",
+    height: ""
+  });
+
+  useEffect(() => {
+    const fetchMeasurements = async () => {
+      try {
+        const token = getAccessToken();
+        if (!token) {
+          navigate('/login');
+          return;
+        }
+        
+        const response = await getMeasurements();
+        setMeasurements(response.data);
+      } catch (err) {
+        setError(err.message || 'Gagal memuat riwayat');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchMeasurements();
+  }, [navigate]);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      // Implementasi submit form ke backend
+      // await saveMeasurement(formData);
+      // Setelah submit, refresh data
+      const response = await getMeasurements();
+      setMeasurements(response.data);
+      setFormData({ weight: "", height: "" });
+    } catch (err) {
+      setError(err.message || 'Gagal menyimpan data');
+    }
+  };
+
+  const handleViewDetail = (measurement) => {
+    navigate(`/PredictResult/${measurement.baby_id}`, {
+      state: {
+        // Kirim data yang dibutuhkan untuk halaman hasil prediksi
+        babyData: {
+          name: measurement.baby_name,
+          weight: measurement.weight,
+          height: measurement.height,
+          gestational_age: measurement.gestational_age,
+          immunization_status: measurement.immunization_status
+        }
+      }
+    });
+  };
+
+  if (loading) {
+    return (
+      <div className="page-container">
+        <Navbar hideAuthButton={true} />
+        <div className="loading">Memuat data...</div>
+        <Footer />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="page-container">
+        <Navbar hideAuthButton={true} />
+        <div className="error-message">{error}</div>
+        <Footer />
+      </div>
+    );
+  }
 
   return (
     <div className="page-container">
@@ -16,42 +102,64 @@ const RiwayatEdukasi = () => {
 
       <div className="content-wrapper">
         <div className="header-card">
-          <h1 className="section-title">Riwayat</h1>
+          <h1 className="section-title">Riwayat Pengukuran</h1>
         </div>
 
         <div className="riwayat-container">
-          <table className="riwayat-table">
-            <thead>
-              <tr>
-                <th>Tanggal</th>
-                <th>Berat Badan</th>
-                <th>Tinggi Badan</th>
-              </tr>
-            </thead>
-            <tbody>
-              {historyData.map((item, index) => (
-                <tr key={index}>
-                  <td>{item.date}</td>
-                  <td>{item.weight}</td>
-                  <td>{item.height}</td>
+          {measurements.length > 0 ? (
+            <table className="riwayat-table">
+              <thead>
+                <tr>
+                  <th>Tanggal</th>
+                  <th>Berat Badan (kg)</th>
+                  <th>Tinggi Badan (cm)</th>
+                  <th>Aksi</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {measurements.map((item, index) => (
+                  <tr key={index}>
+                    <td>{new Date(item.measurement_date).toLocaleDateString('id-ID', {
+                      day: 'numeric',
+                      month: 'long',
+                      year: 'numeric'
+                    })}</td>
+                    <td>{item.weight}</td>
+                    <td>{item.height}</td>
+                    <td>
+                      <button 
+                        className="detail-button"
+                        onClick={() => handleViewDetail(item)}
+                      >
+                        Lihat Detail
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          ) : (
+            <p className="no-data">Belum ada data pengukuran</p>
+          )}
         </div>
 
+        {/* Rest of your component remains the same */}
         {/* Bagian Mentoring*/}
         <div className="mentoring-form-container">
-          <h2 className="mentoring-title">Mentoring Berkala</h2>
-          <form className="mentoring-form">
+          <h2 className="mentoring-title">Tambah Pengukuran Baru</h2>
+          <form className="mentoring-form" onSubmit={handleSubmit}>
             <div className="form-group">
               <label htmlFor="weight">Berat Badan (kg)</label>
               <input
                 type="number"
                 id="weight"
+                name="weight"
                 className="form-input"
                 placeholder="Masukkan berat badan"
                 step="0.1"
+                value={formData.weight}
+                onChange={handleInputChange}
+                required
               />
             </div>
 
@@ -60,8 +168,12 @@ const RiwayatEdukasi = () => {
               <input
                 type="number"
                 id="height"
+                name="height"
                 className="form-input"
                 placeholder="Masukkan tinggi badan"
+                value={formData.height}
+                onChange={handleInputChange}
+                required
               />
             </div>
 

@@ -32,11 +32,15 @@ export const routes = {
   '/login': () => <AuthWrapper><LoginPage /></AuthWrapper>,
   '/register': () => <AuthWrapper><RegisterPage /></AuthWrapper>,
   '/': () => <HomePage />,
-  '/balitaform': () => <BalitaForm />,
   '/riwayat': () => <Riwayat />,
   '/about': () => <About />,
   '/contact': () => <Contact />,
-  '/PredictResult': () => <PredictResult />,
+  // '/PredictResult': () => <PredictResult />,
   '/prediksi': () => <ProtectedRoute><BalitaForm /></ProtectedRoute>,
-  '/profile': () => <ProtectedRoute><Profile /></ProtectedRoute>
+  '/profile': () => <ProtectedRoute><Profile /></ProtectedRoute>,
+  '/PredictResult/:babyId': (params) => (
+    <ProtectedRoute>
+      <PredictResult babyId={params?.babyId} />
+    </ProtectedRoute>
+  ),
 }
