@@ -147,7 +147,7 @@ const Navbar = ({ transparent = false, hideAuthButton = false }) => {
               )}
             </div>
           ) : (
-            !hideAuthButton && (
+            hideAuthButton && (
               <Link to="/login" className="auth-link">
                 Masuk
               </Link>
