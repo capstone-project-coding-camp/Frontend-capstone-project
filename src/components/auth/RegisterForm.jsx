@@ -5,7 +5,7 @@ import { getRegistered } from '../../services/api'
 import '../../styles/auth.css'
 
 export default function RegisterForm() {
-  const [name, setName] = useState('')
+  const [full_name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
@@ -19,7 +19,7 @@ export default function RegisterForm() {
     setError('')
     
     try {
-      const response = await getRegistered({ name, email, password })
+      const response = await getRegistered({ full_name, email, password })
       
       if (!response.ok) {
         throw new Error(response.message || 'Registration failed')
@@ -42,9 +42,9 @@ export default function RegisterForm() {
         
         <form onSubmit={handleSubmit} className="auth-form">
           <div className="form-group">
-            <label htmlFor="name" className="form-label">Full Name</label>
+            <label htmlFor="full_name" className="form-label">Full Name</label>
             <input
-              id="name"
+              id="full_name"
               type="text"
               className="form-input"
               placeholder="Enter your full name"
