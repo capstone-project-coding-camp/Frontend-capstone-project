@@ -4,7 +4,7 @@ import Navbar from './layouts/Navbar';
 import { checkAuth } from '../services/auth';
 import { createBaby, createMeasurement } from '../services/api';
 import '../styles/BalitaForm.css';
-import Footer from './Layouts/Footer';
+import Footer from './layouts/Footer';
 
 export default function BalitaForm() {
   const isAuthenticated = checkAuth();
