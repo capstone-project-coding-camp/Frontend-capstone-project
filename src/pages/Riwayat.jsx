@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "./layouts/Navbar";
-import Footer from "./Layouts/Footer";
+import Footer from "./layouts/Footer";
 import { getMeasurements } from "../services/api";
 import { getAccessToken } from "../services/auth";
 import "../styles/riwayat.css";

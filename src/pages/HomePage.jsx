@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import Navbar from './layouts/Navbar'
-import Footer from './Layouts/Footer'
+import Footer from './layouts/Footer'
 import { checkAuth } from '../services/auth'
 import homepageImage from '../assets/images/homepage-illustration.jpg' 
 import aboutImage from '../assets/images/about-image.webp'

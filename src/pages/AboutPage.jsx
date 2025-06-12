@@ -1,6 +1,6 @@
 import React from 'react';
 import Navbar from './layouts/Navbar'
-import Footer from './Layouts/Footer'
+import Footer from './layouts/Footer'
 import { FaChalkboardTeacher, FaBookOpen, FaUserGraduate, FaUserTie, FaCode, FaMobileAlt, FaChartLine, FaShieldAlt } from 'react-icons/fa';
 import '../styles/About.css';
 import appScreenshot from '../assets/images/about-image.webp';
