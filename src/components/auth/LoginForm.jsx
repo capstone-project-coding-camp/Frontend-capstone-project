@@ -115,9 +115,6 @@ export default function LoginForm() {
             <button type="button" className="social-button">
               <FaGoogle className="social-icon" style={{ color: '#DB4437' }} />
             </button>
-            <button type="button" className="social-button">
-              <FaFacebook className="social-icon" style={{ color: '#4267B2' }} />
-            </button>
           </div>
         </div>
         

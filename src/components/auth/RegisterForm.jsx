@@ -48,7 +48,7 @@ export default function RegisterForm() {
               type="text"
               className="form-input"
               placeholder="Enter your full name"
-              value={name}
+              value={full_name}
               onChange={(e) => setName(e.target.value)}
               required
             />
@@ -115,9 +115,6 @@ export default function RegisterForm() {
           <div className="social-buttons">
             <button type="button" className="social-button">
               <FaGoogle className="social-icon" style={{ color: '#DB4437' }} />
-            </button>
-            <button type="button" className="social-button">
-              <FaFacebook className="social-icon" style={{ color: '#4267B2' }} />
             </button>
           </div>
         </div>

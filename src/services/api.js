@@ -41,9 +41,9 @@ export const getLogin = async ({ email, password }) => {
   }
 };
 
-export const getRegistered = async ({ name, email, password }) => {
+export const getRegistered = async ({ full_name, email, password }) => {
   try {
-    const response = await api.post('/auth/register', { name, email, password })
+    const response = await api.post('/auth/register', { full_name, email, password })
     return response.data
   } catch (error) {
     console.error('Registration error:', error)

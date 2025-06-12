@@ -76,25 +76,27 @@ const Navbar = ({ transparent = false, hideAuthButton = false }) => {
             >
               Edukasi
             </Link>
-            <Link 
-              to="/riwayat" 
-              className={`nav-link ${isActive('/riwayat') ? 'active' : ''}`}
-            >
-              Riwayat
-            </Link>
-            <Link 
-              to="/PredictResult" 
-              className={`nav-link ${isActive('/PredictResult') ? 'active' : ''}`}
-            >
-              Hasil Prediksi
-            </Link>
             {isLoggedIn && (
-              <Link 
-                to="/prediksi" 
-                className={`nav-link ${isActive('/prediksi') ? 'active' : ''}`}
-              >
-                Prediksi
-              </Link>
+              <>
+                <Link 
+                  to="/riwayat" 
+                  className={`nav-link ${isActive('/riwayat') ? 'active' : ''}`}
+                >
+                  Riwayat
+                </Link>
+                <Link 
+                  to="/PredictResult" 
+                  className={`nav-link ${isActive('/PredictResult') ? 'active' : ''}`}
+                >
+                  Hasil Prediksi
+                </Link>
+                <Link 
+                  to="/prediksi" 
+                  className={`nav-link ${isActive('/prediksi') ? 'active' : ''}`}
+                >
+                  Prediksi
+                </Link>
+              </>
             )}
             <Link 
               to="/contact" 
@@ -145,7 +147,7 @@ const Navbar = ({ transparent = false, hideAuthButton = false }) => {
               )}
             </div>
           ) : (
-            hideAuthButton && (
+            !hideAuthButton && (
               <Link to="/login" className="auth-link">
                 Masuk
               </Link>
