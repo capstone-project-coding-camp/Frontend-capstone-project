@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { getAccessToken } from './auth'
 
-const API_BASE_URL = 'https://backend-capstone-project.railway.internal/api'
+const API_BASE_URL = 'https://backend-capstone-project.up.railway.app/api'
 
 const api = axios.create({
   baseURL: API_BASE_URL,
