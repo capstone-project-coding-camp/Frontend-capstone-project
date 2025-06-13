@@ -70,7 +70,7 @@ export default function BalitaForm() {
       await createMeasurement(measurementData);
 
       // Redirect ke halaman hasil prediksi (nanti bisa diupdate setelah implementasi ML)
-      navigate(`/prediction-result/${babyId}`, { state: { babyData: formData } });
+      navigate(`/PredictionResult/${babyId}`, { state: { babyData: formData } });
     } catch (err) {
       setError(err.response?.data?.message || 'Terjadi kesalahan saat menyimpan data');
       console.error('Error:', err);
